@@ -2,9 +2,10 @@
 
 ## Deploy
 
-Fill out the variables in config.py and you know the rest.
-
-Send /start in the control group to start the bot
+1. Fill out the variables in config.py
+2. Make the bot admin in log channel, control group and main group
+3. Send /start in the control group to start the bot
+4. You know the rest
 
 ## Features:
 
