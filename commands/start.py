@@ -43,7 +43,7 @@ class StartBot:
                 caption=f'''
 *Torrent Hoarding Access Bot*
 
-1. Only for members of *{config.invite_channel_link}*
+1. Only for members of {config.invite_channel_link}
 2. Click on the Button "Join Google Group"
 3. Click *"Ask to join the group"* Button and complete the steps
 4. *Send the email used to this bot*

@@ -25,10 +25,11 @@ class Config:
         self.google_group_link = "https://groups.google.com/g/<GroupName>"
 
         # You can point the members here to get invites to the group
-        self.invite_channel_link = "@ChannelUsername"
+        # NOTE: USE BACKSLASH TO ESCAPE ALL THE UNDERSCORES(_) AS SHOWN BELOW
+        self.invite_channel_link = "@Channel\_Username"
 
         # Group for queries and help
-        self.help_group_link = "t.me/ChannelUsername"
+        self.help_group_link = "t.me/Channel_Username"
 
         # GIFs : List[String]
         self.gifs_for_bans = [
