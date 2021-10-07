@@ -17,6 +17,16 @@
 * Keeps a log of the members approved
 * Checks if the person is a member of the main group or not
 
+## Commands
+
+All these commands work in the **Control Group** (specified in config.py)
+
+* ban/unban: Pass in user id (not username) or reply to a forwarded message
+* findmember: Pass in email id or reply to a message containing email id to get google grp membership search results
+* findreq: Pass in email id or reply to a message containing email id to get google grp request search results
+* pin: pin messages
+* purge: purge messages
+
 ## Warning
 
 * Any member of the control group can use the bot so make it private and add only trusted members.
