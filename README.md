@@ -1,5 +1,7 @@
 # Access Bot
 
+Join [@AccessBotHelp](https://t.me/AccessBotHelp) for help.
+
 ## Deploy
 
 1. Fill out the variables in config.py
