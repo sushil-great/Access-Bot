@@ -58,4 +58,9 @@ class Config:
         # This photo will be used for the start message in IBs
         self.private_chat_start_image = 'https://i.imgur.com/O0pyAJN.png'
 
+        # Behaviour Configuration
+
+        # Set to True if you want only messages containing email to be forwarded
+        self.only_forward_with_email = False
+
 config = Config()

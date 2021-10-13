@@ -28,6 +28,14 @@ class PrivateMessageForward:
     @staticmethod
     def callback_function(update: Update, context: CallbackContext):
 
+        if (
+            not update
+            or not update.effective_message
+            or not update.effective_chat
+            or not update.effective_user
+        ):
+            return
+
         chat_object = DBChat.objects(
             chat_id=update.effective_chat.id
         ).first()
@@ -84,6 +92,13 @@ Please set a username first in your Telegram Account settings (see the photo)
 
         # Checking if the message is media
         if not (update.effective_message.text or update.effective_message.caption):
+
+            if config.only_forward_with_email:
+                update.effective_message.reply_markdown(
+                    '❌ Messages not containing any email address will not be forwarded'
+                )
+                return
+
             forwarded_message = update.effective_message.forward(
                 chat_id=config.control_group_id
             )
@@ -114,6 +129,12 @@ Please set a username first in your Telegram Account settings (see the photo)
         elif update.effective_message.caption:
 
             msg_has_email = has_email(update.effective_message.caption)
+
+            if not msg_has_email and config.only_forward_with_email:
+                update.effective_message.reply_markdown(
+                    '❌ Messages not containing any email address will not be forwarded'
+                )
+                return
 
             if msg_has_email and not has_gmail_email(update.effective_message.caption):
                 update.effective_message.reply_markdown(
@@ -164,6 +185,12 @@ Please set a username first in your Telegram Account settings (see the photo)
 
         # Checking Email
         msg_has_email = has_email(update.effective_message.text)
+
+        if not msg_has_email and config.only_forward_with_email:
+            update.effective_message.reply_markdown(
+                '❌ Messages not containing any email address will not be forwarded'
+            )
+            return
 
         if msg_has_email and not has_gmail_email(update.effective_message.text):
             update.effective_message.reply_markdown(
