@@ -41,7 +41,7 @@ class StartBot:
             update.effective_message.reply_photo(
                 photo=config.private_chat_start_image,
                 caption=f'''
-*Torrent Hoarding Access Bot*
+*{config.group_name} Access Bot*
 
 1. Only for members of {config.invite_channel_link}
 2. Click on the Button "Join Google Group"

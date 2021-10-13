@@ -21,6 +21,9 @@ class Config:
         # The ID of the main group of which the person should be a member to be able to send messages through the bot
         self.group_neccessary = -100
 
+        # Insert the name of your group or community, will be shown in start message
+        self.group_name = "Group Name"
+
         # The link to the google group
         self.google_group_link = "https://groups.google.com/g/<GroupName>"
 
