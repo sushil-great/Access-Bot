@@ -4,6 +4,7 @@ from users
 to the control group
 '''
 
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from filters.private_chat_filter import PrivateChatFilter
 from telegram.ext import MessageHandler, CallbackContext, Filters
 from telegram import Update, ParseMode
@@ -87,6 +88,20 @@ class PrivateMessageForward:
 Please set a username first in your Telegram Account settings (see the photo)
 ''',
                 parse_mode=ParseMode.MARKDOWN
+            )
+            return
+
+        if not config.requests_allowed:
+            update.effective_message.reply_markdown(
+                text=config.requests_closed_message,
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton(
+                            text="Doubts/Problems",
+                            url=f"{config.help_group_link}"
+                        )
+                    ]
+                ])
             )
             return
 

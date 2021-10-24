@@ -26,6 +26,19 @@ class StartBot:
         if update.effective_chat.id == config.control_group_id:
             update.effective_message.reply_markdown("*Okay! I am alive.*")
 
+        elif not config.requests_allowed:
+            update.effective_message.reply_markdown(
+                text=config.requests_closed_message,
+                reply_markup=InlineKeyboardMarkup([
+                    [
+                        InlineKeyboardButton(
+                            text="Doubts/Problems",
+                            url=f"{config.help_group_link}"
+                        )
+                    ]
+                ])
+            )
+
         else:
 
             chat_object = DBChat.objects(

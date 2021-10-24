@@ -66,4 +66,17 @@ class Config:
         # Set to True if you want only messages containing email to be forwarded
         self.only_forward_with_email = False
 
+        # Whether invites are open or not
+        self.requests_allowed = True
+        # Markdown format
+        self.requests_closed_message = f'''
+*Hello there*
+
+I am sorry to inform you that we are not accepting any new requests to the google group.
+
+Keep an eye on pinned messages to know when the requests are allowed.
+
+PS: Send /start again to check
+'''
+
 config = Config()
