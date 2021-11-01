@@ -10,6 +10,10 @@ Join [@AccessBotHelp](https://t.me/AccessBotHelp) for help.
 4. Send `/start` in the control group to start the bot
 5. You know the rest
 
+### Repl.it
+
+There is a separate branch for [repl.it](https://replit.com) support: [Click Here](https://github.com/akshettrj/Access-Bot/tree/replit)
+
 ## Features:
 
 * Detects if the mail is gmail or edu
