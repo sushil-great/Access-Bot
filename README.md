@@ -38,6 +38,8 @@ All these commands work in the **Control Group** (specified in config.py)
 
 * Any member of the control group can use the bot so make it private and add only trusted members.
 
+- Copyright (©) by Akshett Rai Jindal
+
 TODO:
 
 * [ ] Add help command
