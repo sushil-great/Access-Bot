@@ -4,18 +4,20 @@ from users
 to the control group
 '''
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from filters.private_chat_filter import PrivateChatFilter
-from telegram.ext import MessageHandler, CallbackContext, Filters
-from telegram import Update, ParseMode
-from database.Message import DBMessage
-from database.Chat import DBChat
-from helpers.email import has_email, has_gmail_email, extract_gmail_email
-from config import config
 import random
+
+from config import config
+from database.Chat import DBChat
+from database.Message import DBMessage
+from filters.private_chat_filter import PrivateChatFilter
+from helpers.email import extract_gmail_email, has_email, has_gmail_email
 from inline_keyboards.base_keyboard import base_keyboard
+from statusctrl import *
+from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
+                      Update)
+from telegram.ext import CallbackContext, Filters, MessageHandler
 
-
+status = getStatus()
 class PrivateMessageForward:
 
     def __init__(self):
@@ -91,7 +93,7 @@ Please set a username first in your Telegram Account settings (see the photo)
             )
             return
 
-        if not config.requests_allowed:
+        if status.lower !='on':
             update.effective_message.reply_markdown(
                 text=config.requests_closed_message,
                 reply_markup=InlineKeyboardMarkup([

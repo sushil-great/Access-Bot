@@ -1,11 +1,13 @@
-from filters.control_group_filter import ControlGroupFilter
-from filters.private_chat_filter import PrivateChatFilter
-from telegram.ext import CommandHandler, CallbackContext
-from telegram import Update, ParseMode, InlineKeyboardButton, InlineKeyboardMarkup
 from config import config
 from database.Chat import DBChat
+from filters.control_group_filter import ControlGroupFilter
+from filters.private_chat_filter import PrivateChatFilter
+from statusctrl import *
+from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
+                      Update)
+from telegram.ext import CallbackContext, CommandHandler
 
-
+status = getStatus()
 class StartBot:
 
     def __init__(self):
@@ -26,7 +28,7 @@ class StartBot:
         if update.effective_chat.id == config.control_group_id:
             update.effective_message.reply_markdown("*Okay! I am alive.*")
 
-        elif not config.requests_allowed:
+        elif status.lower != 'on':
             update.effective_message.reply_markdown(
                 text=config.requests_closed_message,
                 reply_markup=InlineKeyboardMarkup([
