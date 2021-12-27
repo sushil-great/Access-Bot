@@ -3,7 +3,7 @@ def createFile(path, data):
     file.write(data)
 
 def openFile(path):
-  return open(path, 'r').readline()
+  return open(path, 'r').read()
 
 def getStatus():
   return openFile('./status.txt')
