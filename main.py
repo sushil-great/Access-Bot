@@ -24,25 +24,25 @@ from statusctrl import *
 
 
 def statusmsg(update, context):
-    if update.chat.id in config.control_group_id:
+    if update.effective_chat.id == config.control_group_id:
      status = getStatus()
-     update.reply_text(f'i\'m {status}')
+     update.message.reply_text(f'i\'m {status}')
     else:
-        update.reply_text("Stay away From me")
+        update.message.reply_text("Not Authorized")
 
 def bot_on_handler(update, context):
-    if update.chat.id in config.control_group_id:
+    if update.effective_chat.id == config.control_group_id:
      setStatus('on')
-     update.reply_text('Invite are on Now')
+     update.message.reply_text('Invite are on Now')
     else:
-        update.reply_text("Stay away From me")
+        update.message.reply_text("Not Authorized")
 
 def bot_off_handler(update, context):
-    if update.chat.id in config.control_group_id:
+    if update.effective_chat.id in config.control_group_id:
      setStatus('off')
-     update.reply_text('Invite are off now')
+     update.message.reply_text('Invite are off now')
     else:
-        update.reply_text("Stay away From me")
+        update.message.reply_text("Not Authorized")
 
 
 
