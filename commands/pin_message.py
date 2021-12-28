@@ -18,7 +18,7 @@ class PinMessage:
         )
 
     @staticmethod
-    def callback_function(update: Update, context: CallbackContext):
+    def callback_function(update: Update, _: CallbackContext):
 
         if not update.effective_message.reply_to_message:
             update.effective_message.reply_markdown(

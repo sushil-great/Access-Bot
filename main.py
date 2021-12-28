@@ -1,29 +1,32 @@
 import logging
+
 from config import config
 from telegram.ext import Updater
-from database.connect import db_init
+
+from callbacks.approve_user import approval_callback_handler
+from callbacks.banned_message import banned_message_callback_handler
+from callbacks.go_back import (approval_go_back_callback_handler,
+                               no_request_go_back_callback_handler)
+from callbacks.no_request_found import no_request_callback_handler
+from callbacks.undo_no_req import undo_no_request_callback_handler
+from callbacks.warning_message import warn_message_callback_handler
 
 from commands.ban_chat import ban_chat_command
+from commands.find_member import find_member_command
+from commands.find_req_on_gg import find_request_command
+from commands.pin_message import pin_message_command
 from commands.purge_message import purge_messages_command
 from commands.start import start_bot_command
 from commands.unban_chat import unban_chat_command
-from commands.pin_message import pin_message_command
-from commands.find_member import find_member_command
-from commands.find_req_on_gg import find_request_command
+from commands.invites_control import bot_status_command, invites_on_command, invites_off_command
 
-from forward_handlers.private_chat import private_message_forwarder
+from database.connect import db_init
 from forward_handlers.control_group_chat import control_group_message_forwarder
-
-from callbacks.approve_user import approval_callback_handler
-from callbacks.go_back import approval_go_back_callback_handler
-from callbacks.warning_message import warn_message_callback_handler
-from callbacks.no_request_found import no_request_callback_handler
-from callbacks.go_back import no_request_go_back_callback_handler
-from callbacks.undo_no_req import undo_no_request_callback_handler
-from callbacks.banned_message import banned_message_callback_handler
+from forward_handlers.private_chat import private_message_forwarder
 
 
 def main():
+
     updater = Updater(config.bot_token, use_context=True)
     dispatcher = updater.dispatcher
 
@@ -54,7 +57,10 @@ if __name__ == "__main__":
         unban_chat_command,
         pin_message_command,
         find_member_command,
-        find_request_command
+        find_request_command,
+        bot_status_command,
+        invites_on_command,
+        invites_off_command
     ]
 
     callback_handlers = [

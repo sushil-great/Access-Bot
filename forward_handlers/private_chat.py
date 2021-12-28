@@ -4,17 +4,18 @@ from users
 to the control group
 '''
 
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
-from filters.private_chat_filter import PrivateChatFilter
-from telegram.ext import MessageHandler, CallbackContext, Filters
-from telegram import Update, ParseMode
-from database.Message import DBMessage
-from database.Chat import DBChat
-from helpers.email import has_email, has_gmail_email, extract_gmail_email
-from config import config
 import random
-from inline_keyboards.base_keyboard import base_keyboard
 
+from config import config
+from database.Chat import DBChat
+from database.Message import DBMessage
+from filters.private_chat_filter import PrivateChatFilter
+from helpers.email import extract_gmail_email, has_email, has_gmail_email
+from inline_keyboards.base_keyboard import base_keyboard
+from helpers.status_control import get_invites_status
+from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
+                      Update)
+from telegram.ext import CallbackContext, Filters, MessageHandler
 
 class PrivateMessageForward:
 
@@ -44,6 +45,8 @@ class PrivateMessageForward:
         if not chat_object:
             update.effective_message.reply_markdown('*Sorry, please send* /start *first*')
             return
+
+        bot_status = get_invites_status()
 
         # Check if chat is banned
         if chat_object.chat_is_banned:
@@ -78,20 +81,7 @@ class PrivateMessageForward:
             )
             return
 
-        # Checking if the person has a username
-        if not update.effective_user.username:
-            update.effective_message.reply_photo(
-                photo='https://i.imgur.com/jnx5UeM.png',
-                caption='''
-*You cannot proceed further without setting up a username*
-
-Please set a username first in your Telegram Account settings (see the photo)
-''',
-                parse_mode=ParseMode.MARKDOWN
-            )
-            return
-
-        if not config.requests_allowed:
+        if bot_status == 'off':
             update.effective_message.reply_markdown(
                 text=config.requests_closed_message,
                 reply_markup=InlineKeyboardMarkup([
@@ -102,6 +92,19 @@ Please set a username first in your Telegram Account settings (see the photo)
                         )
                     ]
                 ])
+            )
+            return
+
+        # Checking if the person has a username
+        if not update.effective_user.username:
+            update.effective_message.reply_photo(
+                photo='https://i.imgur.com/jnx5UeM.png',
+                caption='''
+*You cannot proceed further without setting up a username*
+
+Please set a username first in your Telegram Account settings (see the photo)
+''',
+                parse_mode=ParseMode.MARKDOWN
             )
             return
 

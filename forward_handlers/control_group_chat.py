@@ -1,8 +1,8 @@
-from filters.control_group_filter import ControlGroupFilter
-from telegram.ext import MessageHandler, CallbackContext, Filters
-from telegram import Update
-from database.Message import DBMessage
 from config import config
+from database.Message import DBMessage
+from filters.control_group_filter import ControlGroupFilter
+from telegram import Update
+from telegram.ext import CallbackContext, Filters, MessageHandler
 
 
 class ControlGroupMessageForward:
