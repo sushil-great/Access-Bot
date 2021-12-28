@@ -20,7 +20,7 @@ class FindRequest:
         )
 
     @staticmethod
-    def callback_function(update: Update, context: CallbackContext):
+    def callback_function(update: Update, _: CallbackContext):
 
         member_email_id = None
 

@@ -2,12 +2,11 @@ from config import config
 from database.Chat import DBChat
 from filters.control_group_filter import ControlGroupFilter
 from filters.private_chat_filter import PrivateChatFilter
-from statusctrl import *
+from helpers.status_control import get_invites_status
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
                       Update)
 from telegram.ext import CallbackContext, CommandHandler
 
-status = getStatus()
 class StartBot:
 
     def __init__(self):
@@ -23,12 +22,14 @@ class StartBot:
         )
 
     @staticmethod
-    def callback_function(update: Update, context: CallbackContext):
+    def callback_function(update: Update, _: CallbackContext):
+
+        bot_status = get_invites_status()
 
         if update.effective_chat.id == config.control_group_id:
             update.effective_message.reply_markdown("*Okay! I am alive.*")
 
-        elif status.lower != 'on':
+        elif bot_status == 'off':
             update.effective_message.reply_markdown(
                 text=config.requests_closed_message,
                 reply_markup=InlineKeyboardMarkup([
