@@ -4,7 +4,7 @@ Join [@AccessBotHelp](https://t.me/AccessBotHelp) for help.
 
 ## Deploy
 
-1. Import the Repo As you are filling Private Creedentials in config
+1. Import the Repo As you will be filling Private Credentials in config
 2. Copy `sample_config.py` to `config.py`
 3. Fill out the variables in `config.py`
 4. Make the bot admin in log channel, control group and main group
