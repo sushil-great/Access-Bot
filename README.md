@@ -4,11 +4,12 @@ Join [@AccessBotHelp](https://t.me/AccessBotHelp) for help.
 
 ## Deploy
 
-1. Copy `sample_config.py` to `config.py`
-2. Fill out the variables in `config.py`
-3. Make the bot admin in log channel, control group and main group
-4. Send `/start` in the control group to start the bot
-5. You know the rest
+1. Import the Repo As you are filling Private Creedentials in config
+2. Copy `sample_config.py` to `config.py`
+3. Fill out the variables in `config.py`
+4. Make the bot admin in log channel, control group and main group
+5. Send `/start` in the control group to start the bot
+6. You know the rest
 
 ### Repl.it
 
@@ -23,6 +24,7 @@ There is a separate branch for [repl.it](https://replit.com) support: [Click Her
 * Ban the spammers using `/ban` command on the forwarded messages
 * Keeps a log of the members approved
 * Checks if the person is a member of the main group or not
+* Turn on/off Bot Invites Using Commands.
 
 ## Commands
 
@@ -33,6 +35,9 @@ All these commands work in the **Control Group** (specified in config.py)
 * `findreq:` Pass in email id or reply to a message containing email id to get google grp request search results
 * `pin:` pin messages
 * `purge:` purge messages
+* `status:` Check Status of Bot Invites
+* `inviteson:` Turn on Bot Invites
+* `invitesoff:` Turn off Bot Invites
 
 ## Warning
 
