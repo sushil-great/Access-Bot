@@ -6,7 +6,4 @@ class PrivateChatFilter(UpdateFilter):
 
     def filter(self, update: Update):
 
-        if update.effective_chat.type == "private":
-            return True
-
-        return False
+        return update.effective_chat.type == "private"

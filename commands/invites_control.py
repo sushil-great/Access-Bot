@@ -24,9 +24,9 @@ class BotStatus:
         bot_status = get_invites_status()
 
         if bot_status == 'on':
-            update.message.reply_text(f'The bot is currently accepting requests.')
+            update.message.reply_text('The bot is currently accepting requests.')
         else:
-            update.message.reply_text(f'The bot is currently *NOT* accepting any requests.')
+            update.message.reply_text('The bot is currently *NOT* accepting any requests.')
 
 
 class InvitesOn:

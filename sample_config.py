@@ -67,14 +67,6 @@ class Config:
         self.only_forward_with_email = False
 
         # Markdown format
-        self.requests_closed_message = f'''
-*Hello there 👋*
-
-- I am sorry to inform you that we are not accepting any new requests to the google group.
-
-- Keep an eye on pinned messages to know when the requests are allowed.
-
-- Send /start again to check
-'''
+        self.requests_closed_message = '\x1f*Hello there 👋*\x1f\x1f- I am sorry to inform you that we are not accepting any new requests to the google group.\x1f\x1f- Keep an eye on pinned messages to know when the requests are allowed.\x1f\x1f- Send /start again to check\x1f'
 
 config = Config()

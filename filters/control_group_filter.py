@@ -7,8 +7,4 @@ class ControlGroupFilter(UpdateFilter):
 
     def filter(self, update: Update):
 
-        if update.effective_chat.id == config.control_group_id:
-            return True
-
-        else:
-            return False
+        return update.effective_chat.id == config.control_group_id
