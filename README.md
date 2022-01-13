@@ -43,6 +43,10 @@ All these commands work in the **Control Group** (specified in config.py)
 
 * Any member of the control group can use the bot so make it private and add only trusted members.
 
+## Special Thanks
+
+* Thanks to [@ZekXtreme](https://github.com/ZekXtreme) for contributing
+
 - Copyright (©) by Akshett Rai Jindal
 
 TODO:
