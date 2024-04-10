@@ -30,9 +30,8 @@ class FindMember:
             if has_email(replied_to_message.text):
                 member_email_id = extract_email(replied_to_message.text)
 
-        if member_email_id is None:
-            if has_email(update.effective_message.text):
-                member_email_id = extract_email(update.effective_message.text)
+        if member_email_id is None and has_email(update.effective_message.text):
+            member_email_id = extract_email(update.effective_message.text)
 
         if member_email_id is None:
             update.effective_message.reply_markdown(

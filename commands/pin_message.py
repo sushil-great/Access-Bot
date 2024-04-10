@@ -26,9 +26,7 @@ class PinMessage:
             )
 
         else:
-            disable_notification = True
-            if context.args and context.args[0] == "loud":
-                disable_notification = False
+            disable_notification = not context.args or context.args[0] != "loud"
 
             update.effective_message.reply_to_message.pin(
                 disable_notification=disable_notification

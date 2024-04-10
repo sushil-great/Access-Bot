@@ -22,11 +22,11 @@ class ApprovalGoBackCallback:
     def callback_function(update: Update, context: CallbackContext):
 
         callback_data = update.callback_query.data.split(";")
-        chat_id_to_be_approved = int(callback_data[2])
         email_id_to_be_assigned = callback_data[3]
         confirming_admin = int(callback_data[4])
 
         if confirming_admin == update.callback_query.from_user.id:
+            chat_id_to_be_approved = int(callback_data[2])
             update.effective_message.edit_reply_markup(
                 base_keyboard(
                     chat_id_to_be_approved,
@@ -61,11 +61,11 @@ class NoRequestGoBackCallback:
     def callback_function(update: Update, context: CallbackContext):
 
         callback_data = update.callback_query.data.split(";")
-        chat_id_to_be_approved = int(callback_data[2])
         email_id_to_be_assigned = callback_data[3]
         confirming_admin = int(callback_data[4])
 
         if confirming_admin == update.callback_query.from_user.id:
+            chat_id_to_be_approved = int(callback_data[2])
             update.effective_message.edit_reply_markup(
                 base_keyboard(
                     chat_id_to_be_approved,
